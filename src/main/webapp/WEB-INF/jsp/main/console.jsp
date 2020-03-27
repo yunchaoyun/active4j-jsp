@@ -91,10 +91,10 @@
             </p>
             <br>
             <p>
-                <a class="btn btn-success btn-outline" href="http://wpa.qq.com/msgrd?v=3&amp;uin=516477188&amp;site=qq&amp;menu=yes" target="_blank">
+                <a class="btn btn-success btn-outline" href="https://github.com/yunchaoyun/active4j-jsp" target="_blank">
                     <i class="fa fa-home"> </i> github
                 </a>
-                <a class="btn btn-white btn-bitbucket" href="http://www.zi-han.net/" target="_blank">
+                <a class="btn btn-white btn-bitbucket" href="https://gitee.com/active4j/active4j-jsp" target="_blank">
                     <i class="fa fa-home"></i> gitee
                 </a>
             </p>
