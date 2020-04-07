@@ -5,6 +5,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
+import com.active4j.hr.core.threadpool.ThreadPoolManager;
 import com.active4j.hr.system.service.SystemService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,9 @@ public class CommonStartConfig implements InitializingBean, DisposableBean {
 	@Override
 	public void destroy() throws Exception {
 		log.info("---------------容器销毁启动执行---------------");
+		
+		//关闭线程池
+		ThreadPoolManager.me().shutdown();
 		
 		log.info("---------------容器销毁启动执行完成---------------");
 	}

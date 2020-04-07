@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.active4j.hr.system.entity.SysDicValueEntity;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 
 /**
  * 系统工具类
@@ -26,6 +27,24 @@ public class SystemUtils {
 	 */
 	public static void putDictionary(String key, List<SysDicValueEntity> lst) {
 		Sys_dictionary.put(key, lst);
+	}
+	
+	/**
+	 * 获取字典对应的值
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public static String getDictionaryValue(String key, String value) {
+		List<SysDicValueEntity> lstValue = Sys_dictionary.get(key);
+		if(null != lstValue && lstValue.size() > 0) {
+			for(SysDicValueEntity dic : lstValue) {
+				if(StringUtils.equals(value, dic.getValue())) {
+					return dic.getLabel();
+				}
+			}
+		}
+		return "";
 	}
 	
 	/**
@@ -61,5 +80,27 @@ public class SystemUtils {
 		return StringUtils.isEmpty(mapDept.get(id)) ? "" : mapDept.get(id);
 	}
 	
+	/**
+	 * 表单类别Id 名称
+	 */
+	public static Map<String, String> mapCategory = new HashMap<String, String>();
+	
+	/**
+	 * 存放表单类别信息
+	 * @param id
+	 * @param name
+	 */
+	public static void putCategory(String id, String name) {
+		mapCategory.put(id, name);
+	}
+	
+	/**
+	 * 根据Id获取表单类别名称
+	 * @param id
+	 * @return
+	 */
+	public static String getCategoryNameById(String id) {
+		return StringUtils.isEmpty(mapCategory.get(id)) ? "" : mapCategory.get(id);
+	}
 	
 }

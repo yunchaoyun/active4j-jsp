@@ -137,6 +137,13 @@
 			<artifactId>UserAgentUtils</artifactId>
 			<version>1.20</version>
 		</dependency>
+		
+		<!--quartz相关依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-quartz</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
