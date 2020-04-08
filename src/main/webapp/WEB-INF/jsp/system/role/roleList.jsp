@@ -240,7 +240,7 @@
 						 for(var i = 0; i < operationList.length; i++) {
 							 var operation = operationList[i];
 							 //判断是否具有按钮的权限，有的话checked
-							 if($.inArray(operation.code, operationCodes) != '-1') {
+							 if($.inArray(operation.code, operationCodes)!==-1) {
 								 html += "<div class='checkbox i-checks'><label><input name='operationCheckbox' type='checkbox' value='" + operation.code + "' checked=''> <i></i> " + operation.name + "</label></div>";
 							 }else {
 								 html += "<div class='checkbox i-checks'><label><input name='operationCheckbox' type='checkbox' value='" + operation.code + "' > <i></i> " + operation.name + "</label></div>";
