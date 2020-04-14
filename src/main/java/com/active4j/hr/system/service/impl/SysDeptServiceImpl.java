@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.active4j.hr.core.web.tag.model.tree.TSDepartTreeData;
 import com.active4j.hr.system.dao.SysDeptDao;
 import com.active4j.hr.system.entity.SysDeptEntity;
+import com.active4j.hr.system.entity.SysUserEntity;
 import com.active4j.hr.system.service.SysDeptService;
+import com.active4j.hr.system.service.SysUserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
@@ -23,6 +26,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 @Service("sysDeptService")
 @Transactional
 public class SysDeptServiceImpl extends ServiceImpl<SysDeptDao, SysDeptEntity> implements SysDeptService {
+	
+	@Autowired
+	private SysUserService sysUserService;
 
 	/**
 	 * 
@@ -110,5 +116,22 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptDao, SysDeptEntity> i
 
 			}
 		}
+	}
+
+	/**
+	 * 
+	 * @description
+	 *  	根据部门id获取用户
+	 * @params
+	 * @return List<SysUserEntity>
+	 * @author guyp
+	 * @time 2020年4月9日 下午4:27:12
+	 */
+	public List<SysUserEntity> getUsersByDept(String deptId) {
+		QueryWrapper<SysUserEntity> queryWrapper = new QueryWrapper<SysUserEntity>();
+		queryWrapper.eq("DEPT_ID", deptId);
+		List<SysUserEntity> lstUsers = sysUserService.list(queryWrapper);
+		
+		return lstUsers;
 	}
 }

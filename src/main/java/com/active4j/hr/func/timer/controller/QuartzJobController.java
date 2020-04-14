@@ -105,7 +105,6 @@ public class QuartzJobController extends BaseController {
 			quartzJobEntity = quartzJobService.getById(quartzJobEntity.getId());
 			view.addObject("job", quartzJobEntity);
 		}
-		
 		//查询数据字典，数据查看权限
 		List<SysDicValueEntity> lstDics = SystemUtils.getDictionaryLst("func_timer_job_group");
 		view.addObject("jobGroup", lstDics);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.active4j.hr.core.web.tag.model.tree.TSDepartTreeData;
 import com.active4j.hr.system.entity.SysDeptEntity;
+import com.active4j.hr.system.entity.SysUserEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface SysDeptService extends IService<SysDeptEntity> {
@@ -38,5 +39,17 @@ public interface SysDeptService extends IService<SysDeptEntity> {
 	 * @time 2020年1月29日 下午4:15:50
 	 */
 	public List<TSDepartTreeData> getTreeDepartList();
+	
+	/**
+	 * 
+	 * @description
+	 *  	根据部门id获取用户
+	 * @params
+	 * @return List<SysUserEntity>
+	 * @author guyp
+	 * @time 2020年4月9日 下午4:27:12
+	 */
+	public List<SysUserEntity> getUsersByDept(String deptId);
+
 
 }
