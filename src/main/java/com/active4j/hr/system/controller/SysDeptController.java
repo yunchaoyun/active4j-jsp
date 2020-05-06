@@ -181,8 +181,25 @@ public class SysDeptController {
 	@Log(type = LogType.del, name = "删除部门信息", memo = "删除了部门信息")
 	public AjaxJson del(SysDeptEntity depart, HttpServletRequest request) {
 		AjaxJson j = new AjaxJson();
+		
 		try {
 			if(StringUtils.isNotEmpty(depart.getId())) {
+				//查询部门下面的用户，存在用户则不能删除该部门
+				List<SysUserEntity> lstUsers = sysDeptService.getUsersByDept(depart.getId());
+				if(null != lstUsers && lstUsers.size() > 0) {
+					j.setSuccess(false);
+					j.setMsg("该部门下存在用户，不能直接删除");
+					return j;
+				}
+				
+				List<SysDeptEntity> lstDepts = sysDeptService.getChildDeptsByDeptId(depart.getId());
+				if(null != lstDepts && lstDepts.size() > 0) {
+					j.setSuccess(false);
+					j.setMsg("该部门下存在子部门，不能直接删除");
+					return j;
+				}
+			
+				//删除部门
 				sysDeptService.removeById(depart.getId());
 			}
 			
